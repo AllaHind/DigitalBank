@@ -1,6 +1,6 @@
 package com.hind.banque.entities;
 
-import com.hind.banque.enums.AccounStatus;
+import com.hind.banque.enums.AccountStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,15 +13,15 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Inheritance(strategy = InheritanceType.JOINED)
-
-public abstract class  BankAccount {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE",length = 4)
+public class BankAccount {
     @Id
     private String id;
     private double balance;
     private Date createdAt;
     @Enumerated(EnumType.STRING)
-    private AccounStatus status;
+    private AccountStatus status;
     @ManyToOne
     private Customer customer;
     @OneToMany(mappedBy = "bankAccount")

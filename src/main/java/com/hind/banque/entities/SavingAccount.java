@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
+@DiscriminatorValue("SA")
 @Data
 public class SavingAccount extends BankAccount {
 

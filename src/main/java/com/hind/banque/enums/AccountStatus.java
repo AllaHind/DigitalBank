@@ -1,5 +1,5 @@
 package com.hind.banque.enums;
 
-public enum AccounStatus {
+public enum AccountStatus {
     CREATED,ACTIVATED,SUSPENDED
 }

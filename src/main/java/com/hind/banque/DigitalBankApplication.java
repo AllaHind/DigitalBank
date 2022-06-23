@@ -4,12 +4,11 @@ import com.hind.banque.entities.AccountOperation;
 import com.hind.banque.entities.CurrentAccount;
 import com.hind.banque.entities.Customer;
 import com.hind.banque.entities.SavingAccount;
-import com.hind.banque.enums.AccounStatus;
+import com.hind.banque.enums.AccountStatus;
 import com.hind.banque.enums.OperationType;
 import com.hind.banque.repositories.AccountOperationRepository;
 import com.hind.banque.repositories.BankAccountRepository;
 import com.hind.banque.repositories.CustomerRepository;
-import org.apache.catalina.authenticator.SavedRequest;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,7 +25,7 @@ public class DigitalBankApplication {
         SpringApplication.run(DigitalBankApplication.class, args);
     }
 
-    @Bean
+  @Bean
     CommandLineRunner start(CustomerRepository customerRepository,
                             BankAccountRepository bankAccountRepository,
                             AccountOperationRepository accountOperationRepository)
@@ -43,7 +42,7 @@ public class DigitalBankApplication {
                 currentAccount.setId(UUID.randomUUID().toString());
                 currentAccount.setBalance(Math.random() * 90000);
                 currentAccount.setCreatedAt(new Date());
-                currentAccount.setStatus(AccounStatus.CREATED);
+                currentAccount.setStatus(AccountStatus.CREATED);
                 currentAccount.setCustomer(customer);
                 currentAccount.setOverDraft(9000);
                 bankAccountRepository.save(currentAccount);
@@ -51,7 +50,7 @@ public class DigitalBankApplication {
                 savingAccount.setId(UUID.randomUUID().toString());
                 savingAccount.setBalance(Math.random() * 90000);
                 savingAccount.setCreatedAt(new Date());
-                savingAccount.setStatus(AccounStatus.CREATED);
+                savingAccount.setStatus(AccountStatus.CREATED);
                 savingAccount.setCustomer(customer);
                 savingAccount.setInterestRate(5.5);
                 bankAccountRepository.save(savingAccount);
